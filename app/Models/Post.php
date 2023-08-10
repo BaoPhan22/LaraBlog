@@ -33,9 +33,9 @@ class Post extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function shortBody(): string
+    public function shortBody($words = 30): string
     {
-        return \Illuminate\Support\Str::words(strip_tags($this->body), 30);
+        return \Illuminate\Support\Str::words(strip_tags($this->body), $words);
     }
 
     public function getFormattedDate()

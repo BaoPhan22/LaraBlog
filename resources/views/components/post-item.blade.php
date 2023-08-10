@@ -12,23 +12,23 @@
 <article class="flex flex-col shadow my-4">
     <!-- Article Image -->
     <a href="{{ route('show', $post) }}" class="hover:opacity-75">
-        <img src="{{ $newImageUrl }}">
+        <img src="{{ $newImageUrl }}" class="aspect-[4/3] object-contain" alt="{{$post->title}}">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
 
         <div class="flex gap-4">
             @foreach ($post->categories as $category)
                 <a href="{{ route('byCategory', $category) }}"
-                    class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $category->title }}</a>
+                    class="text-blue-700 hover:text-white hover:bg-blue-700 text-sm font-bold uppercase mb-4 p-1 rounded-sm">{{ $category->title }}</a>
             @endforeach
         </div>
         <a href="{{ route('show', $post) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title }}</a>
         <p href="#" class="text-sm pb-3">
-            By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>, Published on
+            Tác giả: <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>, đăng ngày
             {{ $post->getFormattedDate() }}
         </p>
         <a href="{{ route('show', $post) }}" class="pb-6">{!! $post->shortBody() !!}</a>
-        <a href="{{ route('show', $post) }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
+        <a href="{{ route('show', $post) }}" class="uppercase text-gray-800 hover:text-black">Đọc tiếp <i
                 class="fas fa-arrow-right"></i></a>
     </div>
 </article>
